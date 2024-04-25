@@ -1,10 +1,8 @@
-import { Controller, Get, Inject } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Inject, Param, Query } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { Observable } from 'rxjs';
-import { generateMultilineReceipt } from './receipt_templates/multi_line';
-import { generatePokemonCard } from './receipt_templates/pokemon-card';
+import { AppService } from './app.service';
 import { PokemonService } from './pokemon/pokemon.service';
+import { generateMultilineReceipt } from './receipt_templates/multi_line';
 
 @Controller()
 export class AppController {
@@ -15,10 +13,10 @@ export class AppController {
   ) {}
 
   @Get()
-  async basic(): Promise<boolean> {
-    // this.client.emit('print', generatePokemonCard('pikachu'));
-    this.pokemonService.getPokemon('pikachu').subscribe((pokemon) => {
-      console.log(pokemon);
+  async basic(@Query('pokemonName') pokemonName): Promise<boolean> {
+    console.log({ pokemonName });
+    this.pokemonService.getPokemon(pokemonName).subscribe((pokemon) => {
+      console.log({ pokemon });
     });
     return true;
   }
