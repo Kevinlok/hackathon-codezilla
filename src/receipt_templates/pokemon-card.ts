@@ -1,4 +1,4 @@
-import { Pokemon } from 'src/pokemon/pokemon.service';
+import { Pokemon } from '../pokemon/pokemon.service';
 
 export const generatePokemonCard = (pokemon: Pokemon) => {
   return `
@@ -6,6 +6,7 @@ export const generatePokemonCard = (pokemon: Pokemon) => {
 |"^^^${pokemon.name} | ^^${pokemon.hp} HP|
 {width: auto; border:line}
 
+{image:${pokemon.image}}
 
 {b:none}
 
@@ -17,6 +18,6 @@ ${pokemon.moves
 |${pokemon.type} | ${pokemon.ability} | ${pokemon.retreatCost}
 
 {w: auto; b: line}
-|Description of the pokémens, this ${pokemon.name} is so cool. It has the amazing ability ${pokemon.ability}.
+|${pokemon.description}.
 `;
 };

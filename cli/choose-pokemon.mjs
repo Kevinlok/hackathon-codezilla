@@ -1,9 +1,9 @@
-// import { prompt } from '@maykoncapellari/cli-builder';
+import { prompt } from '@maykoncapellari/cli-builder';
 import { getResponse } from './getResponse.mjs';
 
 const choosePokemon = async () => {
-  const pokemonName = 'Pikachu';
-  // const pokemonName = await prompt.question('Wat is je favoriete Pokémon? ');
+  // const pokemonName = 'Pikachu';
+  const pokemonName = await prompt.question('Wat is je favoriete Pokémon?');
   console.log(`${pokemonName}, ik kies jou!`);
 
   try {
